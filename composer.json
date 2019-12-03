@@ -1,0 +1,43 @@
+{
+    "name": "dpsoft/mellat",
+    "description": "Mellat bank online payment - درگاه پرداخت بانک ملت به زبان PHP",
+    "keywords": [
+        "dpsoft",
+        "mellat"
+    ],
+    "homepage": "https://github.com/dpsoft/mellat",
+    "license": "GPL-2.0-or-later",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Dpsoft.ir",
+            "email": "daneshpajouhan.ac.ir@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "ext-soap": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DpSoft\\Mellat\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DpSoft\\Mellat\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
