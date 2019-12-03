@@ -7,44 +7,13 @@ use PHPUnit\Framework\TestCase;
 
 class MellatTest extends TestCase
 {
-
-    /**
-     * @var Mellat
-     */
-    private $mellat;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     * @throws \ReflectionException
-     */
-    public function getSoapMock(): \PHPUnit\Framework\MockObject\MockObject
-    {
-        $soapClientMock = $this->getMockFromWsdl(__DIR__."/wsdl/pgw.xml");
-        $result = (new \stdClass);
-        $result->return = '0,__SAMPLE__TOKEN__';
-        $soapClientMock->method('bpPayRequest')->willReturn($result);
-        $soapClientMock->method('bpVerifyRequest')->willReturn($result);
-        $soapClientMock->method('bpSettleRequest')->willReturn($result);
-
-        return $soapClientMock;
-    }
-
-    protected function setUp()
+    public function test_invalid_ip()
     {
         $this->mellat = new Mellat(1, 'un', 'ps');
-        $soapClientMock = $this->getSoapMock();
-        $this->mellat->setSoapClient($soapClientMock);
-        parent::setUp();
-    }
-
-    /**
-     * @test real world scenario
-     */
-    public function test_invalid_terminal()
-    {
-        $this->mellat = new Mellat(1, 'un', 'ps');
+        $this->mellat->setSoapClient($this->getSoapMockWithInvalidResponse());
         $this->expectException(\Exception::class);
-        $this->mellat->request(1000, '');
+        $this->expectExceptionCode(421);
+        $this->mellat->request(1000, '/');
     }
 
     public function test_valid_payment_request()
@@ -60,4 +29,51 @@ class MellatTest extends TestCase
         $this->assertEquals('__REF__ID__', $response['reference_id']);
         $this->assertEquals(123456, $response['order_id']);
     }
+
+    /**
+     * @var Mellat
+     */
+    private $mellat;
+
+    /**
+     * @return array
+     * @throws \ReflectionException
+     */
+    public function getMock(): array
+    {
+        $soapClientMock = $this->getMockFromWsdl(__DIR__."/wsdl/pgw.xml");
+        $result = (new \stdClass);
+
+        return array($soapClientMock, $result);
+    }
+
+    public function getSoapMock()
+    {
+        list($soapClientMock, $result) = $this->getMock();
+        $result->return = '0,__SAMPLE__TOKEN__';
+        $soapClientMock->method('bpPayRequest')->willReturn($result);
+        $soapClientMock->method('bpVerifyRequest')->willReturn($result);
+        $soapClientMock->method('bpSettleRequest')->willReturn($result);
+
+        return $soapClientMock;
+    }
+
+    public function getSoapMockWithInvalidResponse()
+    {
+        list($soapClientMock, $result) = $this->getMock();
+        $result->return = '421';
+        $soapClientMock->method('bpPayRequest')->willReturn($result);
+
+        return $soapClientMock;
+    }
+
+    protected function setUp()
+    {
+        $this->mellat = new Mellat(1, 'un', 'ps');
+        $soapClientMock = $this->getSoapMock();
+        $this->mellat->setSoapClient($soapClientMock);
+        parent::setUp();
+    }
+
+
 }
