@@ -59,7 +59,7 @@ class Mellat
             'terminalId' => $this->terminalId,
             'userName' => $this->userName,
             'userPassword' => $this->userPassword,
-            'orderId' => $orderId ? $orderId : intval(microtime(true) * 10000),
+            'orderId' => $orderId ? $orderId : $this->uniqueNumber(),
             'amount' => $amount,
             'localDate' => date("Ymd"),
             'localTime' => date("His"),
@@ -171,6 +171,11 @@ JS;
         }
 
         return explode(',', $result->return);
+    }
+
+    public function uniqueNumber()
+    {
+        return hexdec(uniqid());
     }
 
     private function error($code = '')
