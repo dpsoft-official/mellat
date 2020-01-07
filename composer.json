@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DpSoft\\Mellat\\": "src"
+            "DpSoft\\Mellat\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DpSoft\\Mellat\\Tests\\": "tests"
+            "DpSoft\\Mellat\\Tests\\": "tests/"
         }
     },
     "scripts": {
