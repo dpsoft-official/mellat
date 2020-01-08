@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DpSoft\\Mellat\\": "src/"
+            "Dpsoft\\Mellat\\": "src/"
         }
     },
     "autoload-dev": {
