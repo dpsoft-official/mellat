@@ -134,7 +134,10 @@ class Mellat
 
     public function redirectScript()
     {
-        $jsScript = <<<JS
+        $jsScript = /** @lang XHTML */
+            <<<JS
+<!DOCTYPE html><html lang="fa"><body>
+                <script>
 var form = document.createElement("form");
 form.setAttribute("method", "POST");
 form.setAttribute("target", "_self");
@@ -148,6 +151,7 @@ hiddenField.setAttribute("name", "RefId");
 form.appendChild(hiddenField);
 document.body.appendChild(form);
 form.submit();
+</script></body></html>
 JS;
 
         return sprintf($jsScript, $this->token, $this->payUrl);
