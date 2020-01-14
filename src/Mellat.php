@@ -1,6 +1,6 @@
 <?php
 
-namespace DpSoft\Mellat;
+namespace Dpsoft\Mellat;
 
 /**
  * Mellat payment

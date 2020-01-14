@@ -1,8 +1,8 @@
 <?php
 
-namespace DpSoft\Mellat\Tests;
+namespace Dpsoft\Mellat\Tests;
 
-use DpSoft\Mellat\Mellat;
+use Dpsoft\Mellat\Mellat;
 use PHPUnit\Framework\TestCase;
 
 class MellatTest extends TestCase
