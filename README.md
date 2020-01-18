@@ -14,10 +14,11 @@ composer require dpsoft/mellat
 ```
 
 ## Usage
+
 1- Request transaction and redirect to bank:
 ```php
 try{
-    $mellat = new \Dpsoft\Mellat($terminalId, $userName, $userPassword);
+    $mellat = new \Dpsoft\Mellat\Mellat($terminalId, $userName, $userPassword);
     $response = $mellat->request($amount);
     
     //save $response info like token($response['token']) and orderId($response['order_id']) then redirect to bank
@@ -27,10 +28,11 @@ try{
     echo "error: ".$e->getMessage();
 }
 ```
+
 2- Handle bank response:
 ```php
 try{
-    $mellat = new \Dpsoft\Mellat($terminalId, $userName, $userPassword);
+    $mellat = new \Dpsoft\Mellat\Mellat($terminalId, $userName, $userPassword);
     $response = $mellat->verify();
     
     //successful payment. save $response info like reference id($response['reference_id'])
@@ -39,6 +41,7 @@ try{
     echo "error: ".$e->getMessage();
 }
 ```
+
 ### Testing
 
 ``` bash
@@ -47,13 +50,12 @@ composer test
 
 ### Security
 
-If you discover any security related issues, please email daneshpajouhan.ac.ir@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email sadeghpm@gmail.com instead of using the issue tracker.
 
 ## Credits
 
 - [Dpsoft.ir](https://dpsoft.ir)
-- [SadeghPm](https://github.com/sadeghpm)
-- [All Contributors](../../contributors)
+- [SadeghPM](https://github.com/sadeghpm)
 
 ## License
 
