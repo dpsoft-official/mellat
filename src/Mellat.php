@@ -92,7 +92,7 @@ class Mellat
         $data = $postData ? $postData : $_POST;
 
         $RefId = $data['RefId'] ?? null;
-        $ResCode = $data['ResCode'] ?? null;
+        $ResCode = intval($data['ResCode'] ?? null);
         $saleOrderId = intval($data['SaleOrderId'] ?? null);
         $SaleReferenceId = $data['SaleReferenceId'] ?? null;
 
@@ -128,7 +128,7 @@ class Mellat
                 $this->throwError($response);
             }
         } else {
-            throw new \Exception('پاسخ نامعتبر از درگاه بانک!',0);
+            throw new \Exception($this->error($ResCode),$ResCode);
         }
     }
 
@@ -184,6 +184,7 @@ JS;
 
     private function error($code = '')
     {
+        $errorText='پاسخ نامعتبر از درگاه بانک!';
 
         switch ($code) {
             case 11:
