@@ -20,7 +20,7 @@ class MellatTest extends TestCase
     {
         $response = $this->mellat->request(1000, '/');
         $this->assertEquals($response['token'], '__SAMPLE__TOKEN__');
-        $this->assertContains('__SAMPLE__TOKEN__', $this->mellat->redirectScript());
+        $this->assertStringContainsString('__SAMPLE__TOKEN__', $this->mellat->redirectScript());
     }
 
     public function test_valid_verify_request()

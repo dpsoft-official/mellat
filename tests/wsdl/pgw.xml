@@ -21,6 +21,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="bpRefundToPANRequestV2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="bpRefundToPANRequestV2">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="bpRefundToPANRequestV2Response">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="bpDynamicPayRequest">
       <soap:operation soapAction="" style="document" />
       <wsdl:input name="bpDynamicPayRequest">
@@ -48,12 +57,12 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="bpVirtualPayRequest">
+    <wsdl:operation name="bpRefundRequestV2">
       <soap:operation soapAction="" style="document" />
-      <wsdl:input name="bpVirtualPayRequest">
+      <wsdl:input name="bpRefundRequestV2">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="bpVirtualPayRequestResponse">
+      <wsdl:output name="bpRefundRequestV2Response">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
