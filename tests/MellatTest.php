@@ -67,7 +67,7 @@ class MellatTest extends TestCase
         return $soapClientMock;
     }
 
-    protected function setUp()
+    protected function setUp():void
     {
         $this->mellat = new Mellat(1, 'un', 'ps');
         $soapClientMock = $this->getSoapMock();
